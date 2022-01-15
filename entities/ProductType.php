@@ -4,47 +4,46 @@
 
     use entities\Entity;
 
-    class Product extends Entity{ 
+    class ProductType extends Entity{ 
 
         protected $id; 
 
         protected $nome; 
 
-        protected $tipo_id;
+        protected $codigo; 
 
         protected $data_registro;
 
-        protected $data_update;
+        protected $data_update; 
 
-        protected $preco_unidade; 
-
+        protected $percentual_imposto; 
 
         public function set_id( $id ){
             if( !is_int($id) && !ctype_digit($id))
                 return;
             $this -> id = $id;
-        }
-
+        } 
+        
         public function set_nome( $nome ){
             if( !is_string($nome) || strlen($nome) > 50 )
                 return;
             $this -> nome = $nome;
-        }
+        } 
 
-        public function set_tipo_id( $tipo_id ){ 
-            if( !is_int($tipo_id) && !ctype_digit($tipo_id))
+        public function set_cod( $cod ){
+            if( is_string($cod) && strlen($cod) < 10 )
                 return;
-            $this -> tipo_id = $tipo_id; 
-        }
+            $this -> cod = $cod;
+        } 
 
         public function set_data_update( $data_update ){
             $this -> data_update = $data_update;
         }
 
-        public function set_preco_unidade( $preco_unidade ){
-            if( !is_numeric($preco_unidade))
+        public function set_percentual_imposto( $percentual_imposto ){
+            if( !is_numeric($percentual_imposto))
                 return;
-            $this -> preco_unidade = $preco_unidade;
+            $this -> percentual_imposto = $percentual_imposto;
         }
 
         public function set_data_registro( $data_registro ){
