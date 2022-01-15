@@ -2,6 +2,10 @@
     require_once('autoload.php');
     require_once('conf.php');
     require_once('core/db.php'); 
-    require_once('controller.php'); 
+
+    if( isset($_GET['teste']) )
+        require_once('teste.php'); 
+    else
+        require_once('controller.php'); 
 
 ?>

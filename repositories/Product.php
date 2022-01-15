@@ -16,22 +16,17 @@
             Registro de um produto na base.
         */
         public function register( ProductEntity $product ){
-
-            foreach( $product -> get_vars() as $key => $value ){
-                if( in_array( $key, ['nome', 'preco_unidade'] ) ) {
-                    if( empty( $value ) )
-                        return;
-                }
-            }
+            
  
-            $query = "INSERT INTO produtos.produtos ( nome, data_registro, preco_unidade ) VALUES ( :nome, :data_registro, :preco_unidade ) "; 
+            $query = "INSERT INTO produtos.produtos ( nome, preco_unidade ) VALUES ( :nome, :preco_unidade ) "; 
             $stmt = $this -> _db -> prepare( $query );
 
-            $stmt -> bindValue(':nome', $product->nome);
-            $stmt -> bindValue(':data_registro', $product->data_registro);
+            $stmt -> bindValue(':nome', $product->nome); 
             $stmt -> bindValue(':preco_unidade', $product->preco_unidade); 
 
-            $stmt ->  execute();
+            if( !$stmt ->  execute() ){
+                return false;
+            }
 
             return $this -> _db -> lastInsertId();
 

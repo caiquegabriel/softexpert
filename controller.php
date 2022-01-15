@@ -4,16 +4,15 @@
 
 
 
-    use repositories\Product as ProductRepo; 
-    use entities\Product as ProductEntity; 
-
-
-    $product = new entities\Product();
-
-    $product -> nome = "Acai"; 
-    $product -> preco_unidade = 20.23;
+    use services\Product as ProductSerice;  
+ 
      
-    $repository = new ProductRepo( db() );
-    $repository -> register( $product );
+    $repository = new ProductSerice( db() );
+    $repository -> register(  
+        [ 
+            'nome' => 'Uva Passa', 
+            'preco' => 2.25
+        ]
+    );
 
 ?>
