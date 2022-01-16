@@ -21,26 +21,16 @@
     switch( $action ){
         case 'register_order':
             $pService = new OrderService( db() );
-            $results = $pService -> register(  
-                [  
-                    [ 
-                        'produto_id' => 16, 
-                        'quantidade' => 10 
-                    ], 
-                    [ 
-                        'produto_id' => 16, 
-                        'quantidade' => 25
-                    ], 
-                    [ 
-                        'produto_id' => 12, 
-                        'quantidade' => 25
-                    ], 
-                    [ 
-                        'produto_id' => 14, 
-                        'quantidade' => 15
-                    ]
-                ]
-            );
+
+            $produtos = [];
+
+            for( $i = 0; $i < count( ($_POST['produto_id'] ?? []) ); $i++){
+                $produto_id = $_POST['produto_id'][$i] ?? 0 ;
+                $quantidade = $_POST['quantidade'][$i] ?? 0 ;
+
+                $produtos[] = [ 'produto_id' => $produto_id, 'quantidade' => $quantidade ];
+            } 
+            $results = $pService -> register($produtos);
 
             if( $results ){
                 echo ">>". $results;
@@ -49,7 +39,7 @@
             }
         break;
         case 'register_order_form':
-            
+
             $ProductService = new ProductService( db() );
             $products = $ProductService -> fetch_products(); 
 

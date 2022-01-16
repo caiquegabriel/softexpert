@@ -36,33 +36,29 @@
 
                             <div class="main">
 
-                                <form> 
+                                <form action="index.php?teste=true&a=register_order" method="POST"> 
 
                                     <div produtos> 
                                         <div produto class="row"> 
                                             <div class="col-7"> 
-                                                <select name="product[]">
+                                                <select name="produto_id[]">
                                                     <?php foreach( $products as $product ): ?>
                                                         <option value="<?= $product['id'] ?>" percentual="<?= $product['produto_percentual_imposto'] ?>" valor="<?= $product['preco_unidade'] ?>" ><?= $product['nome'] ?> ( <?= mask_price( $product['preco_unidade'] , true) ?> + <?= mask_price( $product['produto_percentual_imposto'] ) ?>% ) </option>
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>
                                             <div class="col-4"> 
-                                                <input />
+                                                <input name="quantidade[]" />
                                             </div> 
                                             <div class="col-1"> 
                                                 <a href="#" add>Adicionar mais</a> 
                                             </div> 
                                         </div>  
-                                    </div>
-                                     
-
-                                    <!-- Informações da compra -->
-                                    <div> 
-                                        <p>Preço total: </p>
-                                        <p>Preço total com impostos: </p>
-                                        <p>Produtos selecionados: </p>
                                     </div> 
+
+                                    <div> 
+                                        <button type="submit" class="btn btn-primary">Efetuar venda</button>
+                                    </div>
 
                                 </form>
                                 
