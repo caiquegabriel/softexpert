@@ -22,6 +22,7 @@
             ) VALUES ( 
                 :data_registro
             ) "; 
+            
             $stmt = $this -> _db -> prepare( $query );
 
             $stmt -> bindValue(':data_registro', $order->data_registro);  
