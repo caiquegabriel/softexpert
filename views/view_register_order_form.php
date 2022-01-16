@@ -37,13 +37,14 @@
                             <div class="main">
 
 
-                                <form action="index.php?teste=true&a=register_order" class="mds-box" method="POST"> 
+                                <form action="index.php?a=register_order" class="mds-box" method="POST"> 
                                     <?php if( isset($_GET['error']) && is_string($_GET['error']) ): ?>
                                         <div class="message message-warning mg-bottom-20"><?= urldecode($_GET['error']) ?></div><!--.message-->
                                     <?php endif; ?>
                                     <div produtos class="mg-bottom-10"> 
                                         <div produto class="row mg-bottom-10"> 
                                             <div class="col-7"> 
+                                                <label for="produto_id[]">Produto ( Valor + % de imposto ) </label>
                                                 <select name="produto_id[]">
                                                     <?php foreach( $products as $product ): ?>
                                                         <option value="<?= $product['id'] ?>" percentual="<?= $product['produto_percentual_imposto'] ?>" valor="<?= $product['preco_unidade'] ?>" ><?= $product['nome'] ?> ( <?= mask_price( $product['preco_unidade'] , true) ?> + <?= mask_price( $product['produto_percentual_imposto'] ) ?>% ) </option>
@@ -51,7 +52,8 @@
                                                 </select>
                                             </div>
                                             <div class="col-4"> 
-                                                <input name="quantidade[]" />
+                                                <label for="quantidade[]">Quantidade</label>
+                                                <input type="number" min="1" max="99" name="quantidade[]" />
                                             </div> 
                                             <div class="col-1"> 
                                                 <a class="btn" add><i class="fas fa-plus"></i></a> 

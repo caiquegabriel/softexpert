@@ -34,10 +34,10 @@
             $results = $pService -> register($produtos);
 
             if( $results ){ 
-                header( 'Location: index.php?teste=true&a=view_order&id='.$results );
+                header( 'Location: index.php?a=view_order&id='.$results );
             }else{
                 $error = urlencode( $pService -> get_errors()[0] ?? "" );
-                header( 'Location: index.php?teste=true&a=register_order_form&error='.$error );
+                header( 'Location: index.php?a=register_order_form&error='.$error );
             }
         break; 
         //OK
@@ -66,10 +66,10 @@
             $results = $pService -> register($_POST);
 
             if( $results ){ 
-                header( 'Location: index.php?teste=true&a=view_product_types' );
+                header( 'Location: index.php?a=view_product_types' );
             }else{
                 $error = urlencode( $pService -> get_errors()[0] ?? "" );
-                header( 'Location: index.php?teste=true&a=register_product_type_form&error='.$error );
+                header( 'Location: index.php?a=register_product_type_form&error='.$error );
             }
         break;
         //OK
@@ -78,10 +78,10 @@
             $results = $pService -> register($_POST);
             
             if( $results ){ 
-                header( 'Location: index.php?teste=true&a=view_products' );
+                header( 'Location: index.php?a=view_products' );
             }else{
                 $error = urlencode( $pService -> get_errors()[0] ?? "" );
-                header( 'Location: index.php?teste=true&a=register_product_form&error='.$error );
+                header( 'Location: index.php?a=register_product_form&error='.$error );
             }
         break;
         //OK

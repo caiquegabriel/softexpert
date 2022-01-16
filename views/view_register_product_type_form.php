@@ -35,7 +35,7 @@
                             </div><!--.page-main-->
 
                             <div class="main">
-                                <form action="index.php?teste=true&a=register_product_type" class="mds-box" method="POST"> 
+                                <form action="index.php?a=register_product_type" class="mds-box" method="POST"> 
                                     <?php if( isset($_GET['error']) && is_string($_GET['error']) ): ?>
                                         <div class="message message-warning mg-bottom-20"><?= urldecode($_GET['error']) ?></div><!--.message-->
                                     <?php endif; ?>

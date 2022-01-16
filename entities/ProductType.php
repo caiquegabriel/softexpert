@@ -10,7 +10,7 @@
 
         protected $nome; 
 
-        protected $codigo; 
+        protected $cod; 
 
         protected $data_registro;
 
