@@ -67,7 +67,7 @@
             $product -> preco_unidade = $preco_unidade; 
             $product -> data_registro = date('Y-m-d H:i:s'); 
             $product -> tipo_id = $productType -> id;
-
+            
             $repository = new ProductRepository( $this -> _db );
 
             return $repository -> register( $product ); 
