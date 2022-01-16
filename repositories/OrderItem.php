@@ -43,8 +43,7 @@
                 return false;
             }
 
-            return $this -> _db -> lastInsertId();
-
+            return $this -> _db -> lastInsertId(); 
         }
 
     }
