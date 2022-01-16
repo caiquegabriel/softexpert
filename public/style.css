@@ -2312,6 +2312,14 @@ form .form-group:only-child{
     font-weight: lighter;
 }
 
+.page .page-body .page-wrapper .page-content .header .menu li{ 
+    display: inline-block; 
+    font-size: 14.5px;
+    font-weight: 200;
+    color: #555;
+    margin-right: 20px;
+}
+
 .page .page-body .page-wrapper .page-content .main{ 
     margin-bottom: 10px;
 }

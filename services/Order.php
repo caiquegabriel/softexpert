@@ -112,6 +112,7 @@
             
 
             $order = $order -> get_vars();
+            $order['preco_itens'] = 0;
             $order['preco_total'] = 0;
             $order['items'] = $orderItemRepository -> fetch_items_by_order_id( $order_id );
             $order['count_all_items'] = $orderItemRepository -> count_items_by_order_id( $order_id );
@@ -121,6 +122,7 @@
                 $item['preco_itens']  = ( $item['quantidade'] * $item['produto_preco'] );
                 $item['preco_imposto'] = $item['preco_itens'] * ( $item['produto_percentual_imposto']/100 );
                 $item['preco_total'] = $item['preco_itens'] + $item['preco_imposto'];
+                $order['preco_itens'] += $item['preco_itens'];
                 $order['preco_total'] += $item['preco_total'];
             }
 

@@ -29,11 +29,28 @@
                     <div class="page-content">
                         <div class="page-container"> 
                             <div class="header clearfix">
-                                 
+                                <p class="title fs-22">Venda #<?= $order['id'] ?></p>
+                                <ul class="menu"> 
+                                    <li><i class="fas fa-box"></i><?= count($order['items']) ?> produtos </li>
+                                    <li><i class="fas fa-boxes"></i><?= $order['count_all_items']  ?> itens </li>
+                                    <li><strong>R$</strong> <?= mask_price($order['preco_itens']) ?> </i>( aprox. sem impostos )</i></li>
+                                    <li><strong>R$</strong> <?= mask_price($order['preco_total']) ?> </i>( aprox. com impostos )</i></li>
+                                </ul>
                             </div><!--.page-main-->
 
                             <div class="main">
-                                 
+                                <h3>Detalhes dos produtos adquiridos</h3> 
+                                <div class="struct-items-container">
+                                    <?php foreach( $order['items'] as $item ): ?> 
+                                        <div class="struct-item">  
+                                            <p>( <?= $item['quantidade'] ?>x ) <?= $item['produto_nome'] ?></p> 
+                                            <p>Preço unitário: R$ <?= mask_price( $item['produto_preco'] ) ?> </p> 
+                                            <p>Preço dos (<?= $item['quantidade'] ?>) itens: R$  <?= mask_price( $item['preco_itens'] ) ?> </p>  
+                                            <p>Imposto:  R$  <?= mask_price( $item['preco_imposto'] ) ?> <i>( <?=  mask_price( $item['produto_percentual_imposto'] ) ?> %)</i></p> 
+                                            <p>Preço com imposto:  R$  <?= mask_price( $item['preco_total'] ) ?></p> 
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
                             </div><!--.page-main-->
 
                         </div><!--.page-container-->
