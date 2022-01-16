@@ -57,8 +57,7 @@
                                             <th>Nome</th>
                                             <th>Tipo</th>
                                             <th>Data registro</th> 
-                                            <th>Preço Unidade</th>  
-                                            <th></th> 
+                                            <th>Preço Unidade</th>   
                                         </tr>
                                         <?php foreach( $products as $product ): ?> 
                                             <tr>
@@ -66,11 +65,7 @@
                                                 <td><?= $product['nome'] ?></td>
                                                 <td><?= $product['produto_tipo_nome'] ?></td>
                                                 <td><?= date_format( date_create($product['data_registro']), 'd/m/Y H:i:s' ) ?></td>
-                                                <td><?= mask_price( $product['preco_unidade'], true) ?></td>
-                                                <td>
-                                                    <a class="btn" href="index.php?teste=true&a=view_product&id=<?= $product['id'] ?>"><i class="far fa-eye"></i></a>
-                                                    <a class="btn"  href="index.php?teste=true&a=update_product&id=<?= $product['id'] ?>"><i class="fas fa-pencil-alt"></i></a>
-                                                </td> 
+                                                <td><?= mask_price( $product['preco_unidade'], true) ?></td> 
                                             </tr>  
                                         <?php endforeach; ?> 
                                     </table> 

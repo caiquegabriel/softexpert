@@ -63,7 +63,7 @@
                                                 <td>Venda #<?= $order['id'] ?></td>
                                                 <td><?= date_format( date_create($order['data_registro']), 'd/m/Y H:i:s' ) ?></td>
                                                 <td><?= $order['items_count'] ?></td> 
-                                                <td><a href="index.php?teste=true&a=view_order&id=<?= $order['id'] ?>"><i class="icon-prepend far fa-eye"></i>Detalhes</a></td> 
+                                                <td><a href="index.php?teste=true&a=view_order&id=<?= $order['id'] ?>" class="btn btn-secondary" ><i class="icon-prepend far fa-eye"></i>Detalhes</a></td> 
                                             </tr>  
                                         <?php endforeach; ?> 
                                     </table> 

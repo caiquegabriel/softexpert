@@ -9,9 +9,10 @@
         <link rel='stylesheet' id='fontAwesome-style-2-css'  href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css?ver=2.1.3' type='text/css' media='' />    
         <link rel="stylesheet" href="../public/style.css" /> 
     
-        <script src="../public/script.js"></script>
+         
         <script src="../public/jquery.js" ></script> 
         <script src="../public/jquery_masks.js" ></script> 
+        <script src="../public/script.js"></script>
     </head>
     
      

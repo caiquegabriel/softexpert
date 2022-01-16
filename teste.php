@@ -54,6 +54,7 @@
 
             require_once('views/view_register_product_form.php');
         break;
+        //OK
         case 'register_product_type_form':   
             require_once('views/view_register_product_type_form.php');
         break;
