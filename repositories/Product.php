@@ -33,6 +33,26 @@
 
         }
 
+        public function fetch_by_id( $id ){
+            $query = "SELECT * FROM produtos.produtos WHERE id = :id "; 
+            $stmt = $this -> _db -> prepare( $query ); 
+            $stmt -> bindValue(':id', $id);  
+
+            if( ! $stmt ->  execute()  ){
+                return null;
+            }
+
+            if( $r = $stmt->fetch() ){
+                $ProductEntity = new ProductEntity();
+                foreach( $r  as $key => $value ){
+                    $ProductEntity -> $key = $value;
+                }
+                return $ProductEntity;
+            }else{
+                return null;
+            }
+        }
+
     }
 
 ?>

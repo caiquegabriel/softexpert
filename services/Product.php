@@ -30,7 +30,7 @@
             $tipo_id         = $product_array['tipo_id'] ?? null; 
 
             /*
-                Valirademos o tipo do produto
+                Validaremos o tipo do produto
             */
             if( !is_int( $tipo_id ) && !ctype_digit($tipo_id) ){
                 $this -> _set_error('Tipo de produto inválido!');

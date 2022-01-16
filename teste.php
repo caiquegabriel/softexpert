@@ -4,6 +4,7 @@
 
 
 
+    use services\Order as OrderService;  
     use services\Product as ProductService;  
     use services\ProductType as ProductTypeService;  
 
@@ -11,6 +12,23 @@
 
 
     switch( $action ){
+        case 'register_order':
+            $pService = new OrderService( db() );
+            $results = $pService -> register(  
+                [  
+                    [ 
+                        'produto_id' => 13, 
+                        'quantidade' => 10 
+                    ]
+                ]
+            );
+
+            if( $results ){
+                echo ">>". $results;
+            }else{
+                var_dump( $pService -> get_errors() );
+            }
+        break;
         case 'register_type':
             $pService = new ProductTypeService( db() );
             $results = $pService -> register(  
