@@ -18,7 +18,12 @@
 
         protected $produto_percentual_imposto; 
 
+        protected $produto_nome;
 
+
+        public function set_produto_nome( $produto_nome ){ 
+            $this -> produto_nome = $produto_nome;
+        }
 
         public function set_id( $id ){
             if( !is_int($id) && !ctype_digit($id))

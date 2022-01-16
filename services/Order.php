@@ -109,16 +109,22 @@
             $order = $orderRepository -> fetch_by_id( $order_id );
 
             if( !is_object($order) ) return null;
+            
 
             $order = $order -> get_vars();
+            $order['preco_total'] = 0;
             $order['items'] = $orderItemRepository -> fetch_items_by_order_id( $order_id );
 
             foreach( $order['items'] as &$item ){
-                $item = $item -> get_vars();
-
-                var_dump( $item );
+                $item = $item -> get_vars(); 
+                $item['preco_itens']  = ( $item['quantidade'] * $item['produto_preco'] );
+                $item['preco_imposto'] = $item['preco_itens'] * ( $item['produto_percentual_imposto']/100 );
+                $item['preco_total'] = $item['preco_itens'] + $item['preco_imposto'];
+                $order['preco_total'] += $item['preco_total'];
             }
-            
+
+             
+            return $order;
         }
 
         /*

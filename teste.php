@@ -86,10 +86,9 @@
             $order_id = $_GET['id'] ?? null;  
             $OrderService = new OrderService( db() );
             $order = $OrderService -> fetch_order_by_id( $order_id );
+ 
 
-          //  extract( $orders );
-
-          //  require_once('views/view_orders.php');
+            require_once('views/view_order.php');
         break;
     }
  
