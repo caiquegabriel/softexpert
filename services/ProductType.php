@@ -72,6 +72,22 @@
             return $repository -> register( $type ); 
         }
 
+        /*
+            Retorna os tipos  
+            @Return (array) $types
+        */
+        public function fetch_types(){ 
+
+            $ProductTypeRepository       =  new ProductTypeRepository($this -> _db); 
+            $types = $ProductTypeRepository -> fetch_all();
+            
+            if( empty($types) ) return [];
+
+            foreach( $types as &$type ){ 
+                $type = $type -> get_vars(); 
+            }
+            return $types;
+        }
     }
 
 ?>

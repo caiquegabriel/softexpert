@@ -24,11 +24,11 @@
             $results = $pService -> register(  
                 [  
                     [ 
-                        'produto_id' => 13, 
+                        'produto_id' => 16, 
                         'quantidade' => 10 
                     ], 
                     [ 
-                        'produto_id' => 13, 
+                        'produto_id' => 16, 
                         'quantidade' => 25
                     ], 
                     [ 
@@ -47,6 +47,13 @@
             }else{
                 var_dump( $pService -> get_errors() );
             }
+        break;
+        case 'register_order_form':
+            
+            $ProductService = new ProductService( db() );
+            $products = $ProductService -> fetch_products(); 
+
+            require_once('views/view_register_order_form.php');
         break;
         case 'register_type':
             $pService = new ProductTypeService( db() );
@@ -68,9 +75,9 @@
             $pService = new ProductService( db() );
             $results = $pService -> register(  
                 [ 
-                    'nome'          => 'Uva Passa', 
+                    'nome'          => 'Batata', 
                     'preco_unidade' => 4.56,
-                    'tipo_id'      => 4,
+                    'tipo_id'      => 12,
                 ]
             );
         
@@ -80,11 +87,22 @@
                 var_dump( $pService -> get_errors() );
             }
         break;
+        case 'view_products':
+            $ProductService = new ProductService( db() );
+            $products = $ProductService -> fetch_products(); 
+ 
+            require_once('views/view_products.php');
+        break;
+        case 'view_product_types':
+            $ProductTypeService = new ProductTypeService( db() );
+            $types = $ProductTypeService -> fetch_types(); 
+ 
+            require_once('views/view_product_types.php');
+        break;
         case 'view_orders':
             $OrderService = new OrderService( db() );
-            $orders = $OrderService -> fetch_orders();
-
-            extract( $orders );
+            $orders = $OrderService -> fetch_orders(); 
+            
 
             require_once('views/view_orders.php');
         break;

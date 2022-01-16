@@ -18,6 +18,10 @@
 
         protected $preco_unidade; 
 
+        protected $produto_percentual_imposto; 
+
+        protected $produto_tipo_nome;
+
 
         public function set_id( $id ){
             if( !is_int($id) && !ctype_digit($id))
@@ -29,6 +33,14 @@
             if( !is_string($nome) || strlen($nome) > 50 )
                 return;
             $this -> nome = $nome;
+        }
+
+        public function set_produto_tipo_nome( $produto_tipo_nome ){ 
+            $this -> produto_tipo_nome = $produto_tipo_nome;
+        }
+
+        public function set_produto_percentual_imposto( $produto_percentual_imposto ){ 
+            $this -> produto_percentual_imposto = $produto_percentual_imposto;
         }
 
         public function set_tipo_id( $tipo_id ){ 

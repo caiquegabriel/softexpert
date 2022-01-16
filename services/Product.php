@@ -73,6 +73,22 @@
             return $repository -> register( $product ); 
         }
 
+        /*
+            Retorna os produtos  
+            @Return (array) $products
+        */
+        public function fetch_products(){ 
+
+            $ProductRepository       =  new ProductRepository($this -> _db); 
+            $products = $ProductRepository -> fetch_all();
+            if( empty($products) ) return [];
+
+            foreach( $products as &$product ){ 
+                $product = $product -> get_vars(); 
+            }
+            return $products;
+        }
+
     }
 
 ?>

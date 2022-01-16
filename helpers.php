@@ -8,7 +8,7 @@
     */
     function mask_price( $price , $show_symbol = false , $currency  = 'BRL'){
         if(!is_numeric( $price ))
-            $price = '999999999999999999999999999999999999.99';
+            $price = '-0.00';
 
         $price = number_format( $price  , 2, ',', '.');
 

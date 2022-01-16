@@ -89,6 +89,28 @@
             }
         }
 
+        /*
+            Pegar todas as ordens/vendas
+        */
+        public function fetch_all(){ 
+ 
+            $query = "
+            SELECT *  FROM produtos.produto_tipo ORDER BY id DESC"; 
+            $stmt = $this -> _db -> prepare( $query ); 
+            $stmt -> execute();
+            if( $results = $stmt->fetchAll() ){
+                foreach( $results as &$result ){
+                    $productTypeEntity = new ProductTypeEntity();
+                    foreach( $result  as $key => $value ){ 
+                        $productTypeEntity -> $key = $value;
+                    }
+                    $result = $productTypeEntity;
+                }
+                return $results;
+            }
+            return [];
+        }
+
     }
 
 ?>
