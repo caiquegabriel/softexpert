@@ -46,6 +46,22 @@
             return $this -> _db -> lastInsertId(); 
         }
 
+        public function count_items_by_order_id( $id ){
+            $query = "SELECT SUM(quantidade) as total FROM produtos.venda_item WHERE venda_id = :venda_id "; 
+            $stmt = $this -> _db -> prepare( $query ); 
+            $stmt -> bindValue(':venda_id', $id);  
+
+            if( ! $stmt ->  execute()  ){
+                return null;
+            }
+
+            if( $r = $stmt->fetch() ){ 
+                return $r['total'] ?? 0;
+            }else{
+                return 0;
+            }
+        }
+
     }
 
 ?>

@@ -34,6 +34,27 @@
             return $this -> _db -> lastInsertId(); 
         }
 
+        /*
+            Pegar todas as ordens/vendas
+        */
+        public function fetch_all(){ 
+ 
+            $query = "SELECT * FROM produtos.venda ORDER BY id DESC"; 
+            $stmt = $this -> _db -> prepare( $query ); 
+            $stmt -> execute();
+            if( $results = $stmt->fetchAll() ){
+                foreach( $results as &$result ){
+                    $orderEntity = new OrderEntity();
+                    foreach( $result  as $key => $value ){
+                        $orderEntity -> $key = $value;
+                    }
+                    $result = $orderEntity;
+                }
+                return $results;
+            }
+            return [];
+        }
+
         public function delete_by_id( $order_id){ 
  
             $query = "DELETE FROM produtos.venda WHERE id = :id "; 

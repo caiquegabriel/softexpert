@@ -19,6 +19,18 @@
                     [ 
                         'produto_id' => 13, 
                         'quantidade' => 10 
+                    ], 
+                    [ 
+                        'produto_id' => 13, 
+                        'quantidade' => 25
+                    ], 
+                    [ 
+                        'produto_id' => 12, 
+                        'quantidade' => 25
+                    ], 
+                    [ 
+                        'produto_id' => 14, 
+                        'quantidade' => 15
                     ]
                 ]
             );
@@ -60,6 +72,14 @@
             }else{
                 var_dump( $pService -> get_errors() );
             }
+        break;
+        case 'view_orders':
+            $OrderService = new OrderService( db() );
+            $orders = $OrderService -> fetch_orders();
+
+            extract( $orders );
+
+            require_once('views/view_orders.php');
         break;
     }
  

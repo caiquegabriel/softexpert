@@ -4,6 +4,7 @@
 
     use services\Service;
 
+    use entities\Order as ProductEntity;
     use entities\Order as orderEntity;
     use entities\OrderItem as OrderItemEntity;
     use repositories\OrderItem as OrderItemRepository; 
@@ -40,17 +41,15 @@
             $order_id = $orderRepository -> register( $orderEntity );
             if( !$order_id ){
                 $this -> _set_error('Falha ao cadastrar a venda.');
-            }else{
+            }else{  
                 /*
                     Deu certo cadastrar a venda. Vamos cadastrar os itens da venda.
                 */
                 $items_registered = 0;
-                foreach( $items as $item ){
-
+                foreach( $items as $item ){ 
                     if( ($item_id = $this -> _register_item($order_id, $item) ) ){
                         $items_registered++;
-                    }
-
+                    } 
                 }
 
                 /*
@@ -69,6 +68,29 @@
                 return $order_id; 
             }
 
+        }
+
+        /*
+            Retorna as ordens/vendas efetuadas e o número de itens. 
+            @Return (array) $orders
+        */
+        public function fetch_orders(){ 
+
+            $orderRepository       =  new OrderRepository($this -> _db);
+            $orderItemRepository   =  new orderItemRepository($this -> _db);
+            $orders = $orderRepository -> fetch_all();
+
+            if( empty($orders) ) return [];
+
+            foreach( $orders as &$order ){ 
+                $order = $order -> get_vars();
+                
+                /*
+                    Vamos pegar os itens da venda 
+                */
+                $order['items_count'] = $orderItemRepository -> count_items_by_order_id( $order['id'] ); 
+            }
+            return $orders;
         }
 
         /*
