@@ -36,10 +36,13 @@
 
                             <div class="main">
 
-                                <form action="index.php?teste=true&a=register_order" method="POST"> 
 
-                                    <div produtos> 
-                                        <div produto class="row"> 
+                                <form action="index.php?teste=true&a=register_order" class="mds-box" method="POST"> 
+                                    <?php if( isset($_GET['error']) && is_string($_GET['error']) ): ?>
+                                        <div class="message message-warning mg-bottom-20"><?= urldecode($_GET['error']) ?></div><!--.message-->
+                                    <?php endif; ?>
+                                    <div produtos class="mg-bottom-10"> 
+                                        <div produto class="row mg-bottom-10"> 
                                             <div class="col-7"> 
                                                 <select name="produto_id[]">
                                                     <?php foreach( $products as $product ): ?>
@@ -51,13 +54,13 @@
                                                 <input name="quantidade[]" />
                                             </div> 
                                             <div class="col-1"> 
-                                                <a href="#" add>Adicionar mais</a> 
+                                                <a class="btn" add><i class="fas fa-plus"></i></a> 
                                             </div> 
                                         </div>  
                                     </div> 
 
-                                    <div> 
-                                        <button type="submit" class="btn btn-primary">Efetuar venda</button>
+                                    <div class="form-submit"> 
+                                        <button type="submit" class="btn btn-primary"><i class="icon-prepend fas fa-paper-plane"></i>Cadastrar</button>
                                     </div>
 
                                 </form>

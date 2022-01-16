@@ -32,10 +32,11 @@
             } 
             $results = $pService -> register($produtos);
 
-            if( $results ){
-                echo ">>". $results;
+            if( $results ){ 
+                header( 'Location: index.php?teste=true&a=view_order&id='.$results );
             }else{
-                var_dump( $pService -> get_errors() );
+                $error = urlencode( $pService -> get_errors()[0] ?? "" );
+                header( 'Location: index.php?teste=true&a=register_order_form&error='.$error );
             }
         break;
         case 'register_order_form':
