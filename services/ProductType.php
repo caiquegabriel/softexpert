@@ -48,8 +48,8 @@
             /*
                 Validaremos o percentual de imposto
             */
-            if( ( !is_numeric($percentual_imposto) && !ctype_digit($percentual_imposto) ) ||  $percentual_imposto < 0.00 ){
-                $this -> _set_error('O  percentual de imposto deve ser maior que -0.01');
+            if( ( !is_numeric($percentual_imposto) && !ctype_digit($percentual_imposto) ) ||  $percentual_imposto < 0.00 ||  $percentual_imposto > 100 ){
+                $this -> _set_error('O  percentual de imposto deve ser maior que -0.01 e menor que 100 ');
                 return;
             }
 

@@ -31,7 +31,7 @@
         } 
 
         public function set_cod( $cod ){
-            if( is_string($cod) && strlen($cod) < 10 )
+            if( !is_string($cod) || strlen($cod) > 10 )
                 return;
             $this -> cod = $cod;
         } 

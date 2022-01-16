@@ -45,7 +45,7 @@
                                     <div class="row"> 
                                         <div class="col-4"> 
                                             <label for="nome">Nome</label>
-                                            <input type="text" name="nome" placeholder="nome" />
+                                            <input type="text" name="nome" placeholder="Ex.: NOME" />
                                         </div>
 
                                         <div class="col-4"> 
@@ -59,7 +59,7 @@
 
                                         <div class="col-4"> 
                                             <label for="preco_unidade">Preço da unidade</label>
-                                            <input type="text" name="preco_unidade" placeholder="0.00" />
+                                            <input type="text" name="preco_unidade" placeholder="Ex.: 0.00" />
                                         </div>
                                     </div>
 

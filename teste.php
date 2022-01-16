@@ -54,20 +54,19 @@
 
             require_once('views/view_register_product_form.php');
         break;
-        case 'register_type':
+        case 'register_product_type_form':   
+            require_once('views/view_register_product_type_form.php');
+        break;
+        //OK
+        case 'register_product_type':
             $pService = new ProductTypeService( db() );
-            $results = $pService -> register(  
-                [  
-                    'percentual_imposto' => 1.90,
-                    'nome' => "Legumes",
-                    'cod' => "LEGUMES029",
-                ]
-            );
+            $results = $pService -> register($_POST);
 
-            if( $results ){
-                echo ">>". $results;
+            if( $results ){ 
+                header( 'Location: index.php?teste=true&a=view_product_types' );
             }else{
-                var_dump( $pService -> get_errors() );
+                $error = urlencode( $pService -> get_errors()[0] ?? "" );
+                header( 'Location: index.php?teste=true&a=register_product_type_form&error='.$error );
             }
         break;
         //OK

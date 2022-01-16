@@ -63,7 +63,7 @@
                                             <tr>
                                                 <td><?= $type['id'] ?></td>
                                                 <td><?= $type['nome'] ?></td>
-                                                <td><?= $type['cod'] ?></td>
+                                                <td><?= $type['cod'] ?? '' ?></td>
                                                 <td><?= date_format( date_create($type['data_registro']), 'd/m/Y H:i:s' ) ?></td>
                                                 <td><?= mask_price( $type['percentual_imposto'], true) ?> %</td> 
                                             </tr>  
