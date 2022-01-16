@@ -19,6 +19,7 @@
 
 
     switch( $action ){
+        //OK
         case 'register_order':
             $pService = new OrderService( db() );
 
@@ -38,13 +39,20 @@
                 $error = urlencode( $pService -> get_errors()[0] ?? "" );
                 header( 'Location: index.php?teste=true&a=register_order_form&error='.$error );
             }
-        break;
+        break; 
         case 'register_order_form':
 
             $ProductService = new ProductService( db() );
             $products = $ProductService -> fetch_products(); 
 
             require_once('views/view_register_order_form.php');
+        break;
+        case 'register_product_form':  
+
+            $ProductTypeService = new ProductTypeService( db() );
+            $types = $ProductTypeService -> fetch_types(); 
+
+            require_once('views/view_register_product_form.php');
         break;
         case 'register_type':
             $pService = new ProductTypeService( db() );
@@ -62,20 +70,16 @@
                 var_dump( $pService -> get_errors() );
             }
         break;
+        //OK
         case 'register_product':
             $pService = new ProductService( db() );
-            $results = $pService -> register(  
-                [ 
-                    'nome'          => 'Batata', 
-                    'preco_unidade' => 4.56,
-                    'tipo_id'      => 12,
-                ]
-            );
-        
-            if( $results ){
-                echo ">>". $results;
+            $results = $pService -> register($_POST);
+            
+            if( $results ){ 
+                header( 'Location: index.php?teste=true&a=view_products' );
             }else{
-                var_dump( $pService -> get_errors() );
+                $error = urlencode( $pService -> get_errors()[0] ?? "" );
+                header( 'Location: index.php?teste=true&a=register_product_form&error='.$error );
             }
         break;
         case 'view_products':
