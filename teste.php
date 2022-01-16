@@ -40,6 +40,7 @@
                 header( 'Location: index.php?teste=true&a=register_order_form&error='.$error );
             }
         break; 
+        //OK
         case 'register_order_form':
 
             $ProductService = new ProductService( db() );
@@ -47,6 +48,7 @@
 
             require_once('views/view_register_order_form.php');
         break;
+        //OK
         case 'register_product_form':  
 
             $ProductTypeService = new ProductTypeService( db() );
@@ -82,18 +84,21 @@
                 header( 'Location: index.php?teste=true&a=register_product_form&error='.$error );
             }
         break;
+        //OK
         case 'view_products':
             $ProductService = new ProductService( db() );
             $products = $ProductService -> fetch_products(); 
  
             require_once('views/view_products.php');
         break;
+        //OK
         case 'view_product_types':
             $ProductTypeService = new ProductTypeService( db() );
             $types = $ProductTypeService -> fetch_types(); 
  
             require_once('views/view_product_types.php');
         break;
+        //OK
         case 'view_orders':
             $OrderService = new OrderService( db() );
             $orders = $OrderService -> fetch_orders(); 
@@ -101,6 +106,7 @@
 
             require_once('views/view_orders.php');
         break;
+        //OK
         case 'view_order':
 
             $order_id = $_GET['id'] ?? null;  
