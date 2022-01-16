@@ -94,6 +94,34 @@
         }
 
         /*
+            Retorna a ordem e seus itens
+            @Return (array) $orders
+        */
+        public function fetch_order_by_id( $order_id ){ 
+
+            if( !ctype_digit( $order_id ) && !is_numeric($order_id)){
+                $this -> _set_error('ID da ordem inválida!');
+                return;
+            }  
+
+            $orderRepository       =  new OrderRepository($this -> _db);
+            $orderItemRepository   =  new orderItemRepository($this -> _db);
+            $order = $orderRepository -> fetch_by_id( $order_id );
+
+            if( !is_object($order) ) return null;
+
+            $order = $order -> get_vars();
+            $order['items'] = $orderItemRepository -> fetch_items_by_order_id( $order_id );
+
+            foreach( $order['items'] as &$item ){
+                $item = $item -> get_vars();
+
+                var_dump( $item );
+            }
+            
+        }
+
+        /*
             Registro de uma compra na base
             @Param (int)   $order_id : ID da compra
             @Param (array) $item : Array com os dados de determinado item
@@ -134,7 +162,7 @@
                 return;
             }
 
-            $item_produto_preco = $product  -> preco; 
+            $item_produto_preco = $product  -> preco_unidade; 
             $item_produto_percentual_imposto = $productType->percentual_imposto ?? null; 
 
 
@@ -142,9 +170,9 @@
             $OrderItemEntity -> venda_id = $order_id; 
             $OrderItemEntity -> produto_id = $item_produto_id; 
             $OrderItemEntity -> quantidade = $item_quantidade; 
-            $OrderItemEntity -> produto_precp = $item_produto_preco; 
+            $OrderItemEntity -> produto_preco = $item_produto_preco; 
             $OrderItemEntity -> produto_percentual_imposto = $item_produto_percentual_imposto; 
-            
+             
             /*
                 Vamos registrar o item da compra 
             */

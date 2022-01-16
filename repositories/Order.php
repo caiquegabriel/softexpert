@@ -55,6 +55,26 @@
             return [];
         }
 
+        public function fetch_by_id( $id ){
+            $query = "SELECT * FROM produtos.venda WHERE id = :id "; 
+            $stmt = $this -> _db -> prepare( $query ); 
+            $stmt -> bindValue(':id', $id);  
+
+            if( ! $stmt ->  execute()  ){
+                return null;
+            }
+
+            if( $r = $stmt->fetch() ){
+                $OrderEntity = new OrderEntity();
+                foreach( $r  as $key => $value ){
+                    $OrderEntity -> $key = $value;
+                }
+                return $OrderEntity;
+            }else{
+                return null;
+            }
+        }
+
         public function delete_by_id( $order_id){ 
  
             $query = "DELETE FROM produtos.venda WHERE id = :id "; 

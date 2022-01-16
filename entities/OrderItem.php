@@ -45,13 +45,13 @@
         }
 
         public function set_produto_preco( $produto_preco ){
-            if( is_numeric($produto_preco))
+            if( !is_numeric($produto_preco) )
                 return;
             $this -> produto_preco = $produto_preco;
         }
 
         public function set_produto_percentual_imposto( $produto_percentual_imposto ){
-            if( is_numeric($produto_percentual_imposto))
+            if( !is_numeric($produto_percentual_imposto))
                 return;
             $this -> produto_percentual_imposto = $produto_percentual_imposto;
         }

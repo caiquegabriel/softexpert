@@ -62,6 +62,24 @@
             }
         }
 
+        public function fetch_items_by_order_id( $venda_id ){
+            $query = "SELECT * FROM produtos.venda_item WHERE venda_id = :venda_id "; 
+            $stmt = $this -> _db -> prepare( $query ); 
+            $stmt -> bindValue( ':venda_id', $venda_id );
+            $stmt -> execute();
+            if( $results = $stmt->fetchAll() ){
+                foreach( $results as &$result ){
+                    $orderItemEntity = new OrderItemEntity();
+                    foreach( $result  as $key => $value ){
+                        $orderItemEntity -> $key = $value;
+                    }
+                    $result = $orderItemEntity;
+                }
+                return $results;
+            }
+            return [];
+        }
+
     }
 
 ?>

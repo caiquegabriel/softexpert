@@ -81,6 +81,16 @@
 
             require_once('views/view_orders.php');
         break;
+        case 'view_order':
+
+            $order_id = $_GET['id'] ?? null;  
+            $OrderService = new OrderService( db() );
+            $order = $OrderService -> fetch_order_by_id( $order_id );
+
+          //  extract( $orders );
+
+          //  require_once('views/view_orders.php');
+        break;
     }
  
      
