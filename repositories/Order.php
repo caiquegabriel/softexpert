@@ -55,6 +55,21 @@
             return [];
         }
 
+        public function count_all(  ){
+            $query = "SELECT count(id) as total FROM produtos.venda "; 
+            $stmt = $this -> _db -> prepare( $query );  
+
+            if( ! $stmt ->  execute()  ){
+                return null;
+            }
+
+            if( $r = $stmt->fetch() ){ 
+                return $r['total'] ?? 0;
+            }else{
+                return 0;
+            }
+        }
+
         public function fetch_by_id( $id ){
             $query = "SELECT * FROM produtos.venda WHERE id = :id "; 
             $stmt = $this -> _db -> prepare( $query ); 

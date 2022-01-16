@@ -1,22 +1,48 @@
-<?php  
-    if( !defined('START') ) die('...'); 
-?>
+<?php  if(!defined('START')) die() ?>
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Farmácia</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    </head>
+    
+    <link rel='stylesheet' id='fontAwesome-style-css'  href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css?ver=2.1.3' type='text/css' media='' />
+    <link rel='stylesheet' id='fontAwesome-style-2-css'  href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css?ver=2.1.3' type='text/css' media='' />    
+    <link rel="stylesheet" href="../public/style.css" /> 
+   
+
+    <body>
+        <div class="page"> 
+ 
+            <div class="page-body">
 
 
-<div> 
 
-    <p>Venda #<?= $order['id'] ?></p>
+                <div class="page-wrapper">
 
-    <h3> Itens </h3> 
+                    <!-- SIDEBAR -->
+                    <?php require_once('sidebar.php'); ?>
+                     
 
-    <?php foreach( $order['items'] as $item ): ?> 
-        <div>  
-            <p>( <?= $item['quantidade'] ?>x ) <?= $item['produto_nome'] ?></p> 
-            <p>Preço unitário: R$ <?= mask_price( $item['produto_preco'] ) ?> </p> 
-            <p>Preço total dos itens: R$  <?= mask_price( $item['preco_itens'] ) ?> </p>  
-            <p>Preço do imposto:  R$  <?= mask_price( $item['preco_imposto'] ) ?> <i>( <?=  mask_price( $item['produto_percentual_imposto'] ) ?> %)</i></p> 
-            <p>Preço total:  R$  <?= mask_price( $item['preco_total'] ) ?> (%)</p> 
-        </div>
-    <?php endforeach; ?>
+                     
+                    <div class="page-content">
+                        <div class="page-container"> 
+                            <div class="header clearfix">
+                                 
+                            </div><!--.page-main-->
 
-</div>
+                            <div class="main">
+                                 
+                            </div><!--.page-main-->
+
+                        </div><!--.page-container-->
+                    </div><!--.page-content-->
+                     
+
+                </div><!--.page-wrapper-->
+
+            </div><!--.page-body-->
+        </div><!--.page-->
+    </body>  
+</html>

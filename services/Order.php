@@ -114,6 +114,7 @@
             $order = $order -> get_vars();
             $order['preco_total'] = 0;
             $order['items'] = $orderItemRepository -> fetch_items_by_order_id( $order_id );
+            $order['count_all_items'] = $orderItemRepository -> count_items_by_order_id( $order_id );
 
             foreach( $order['items'] as &$item ){
                 $item = $item -> get_vars(); 

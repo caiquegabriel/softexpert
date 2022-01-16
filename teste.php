@@ -4,11 +4,18 @@
 
 
 
+    use repositories\Order as OrderRepository;  
+    use repositories\Product as ProductRepository;  
+    use repositories\ProductType as ProductTypeRepository;  
     use services\Order as OrderService;  
     use services\Product as ProductService;  
     use services\ProductType as ProductTypeService;  
 
     $action = $_GET['a'] ?? '';
+
+    $global_orders_count = ( new OrderRepository( db() ) ) -> count_all();
+    $global_products_count = ( new ProductRepository( db() ) ) -> count_all();
+    $global_product_types_count = ( new ProductTypeRepository( db() ) ) -> count_all();
 
 
     switch( $action ){
@@ -86,7 +93,11 @@
             $order_id = $_GET['id'] ?? null;  
             $OrderService = new OrderService( db() );
             $order = $OrderService -> fetch_order_by_id( $order_id );
- 
+            
+            if( !is_array($order) ) {
+                require_once('views/error.php');
+                return;
+            }
 
             require_once('views/view_order.php');
         break;
