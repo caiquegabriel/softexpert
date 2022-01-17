@@ -7,11 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <link rel='stylesheet' id='fontAwesome-style-css'  href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css?ver=2.1.3' type='text/css' media='' />
         <link rel='stylesheet' id='fontAwesome-style-2-css'  href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css?ver=2.1.3' type='text/css' media='' />    
-        <link rel="stylesheet" href="../public/style.css" /> 
+        <link rel="stylesheet" href="<?= ROOT ?>/public/style.css" /> 
     
-        <script src="../public/script.js"></script>
-        <script src="../public/jquery.js" ></script> 
-        <script src="../public/jquery_masks.js" ></script> 
+        <script src="<?= ROOT ?>/public/script.js"></script>
+        <script src="<?= ROOT ?>/public/jquery.js" ></script> 
+        <script src="<?= ROOT ?>/public/jquery_masks.js" ></script> 
     </head>
     
      
@@ -37,8 +37,7 @@
                             </div><!--.page-main-->
 
                             <div class="main">
-                                <p></p> 
-
+                                <p></p>  
                                 <div class="cards"> 
                                     <div class="card">
                                         <div class="card-header"> 

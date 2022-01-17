@@ -120,6 +120,9 @@
 
             require_once('views/view_order.php');
         break;
+        default: 
+            require_once('views/view_orders.php');
+        break;
     }
  
      

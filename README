@@ -4,3 +4,5 @@
 
 # O arquivo "conf.php" contém as variáveis para a conexão com a base de dados. 
 -> Altere este arquivo com as credenciais do acesso do seu banco de dados Postgres. 
+
+# Pode haver um erro CASE-SENSITIVE  devido o namespace possuir letras maiusculas  e minusculas...
