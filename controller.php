@@ -120,7 +120,12 @@
 
             require_once('views/view_order.php');
         break;
-        default: 
+        default:  
+
+            $OrderService = new OrderService( db() );
+            $orders = $OrderService -> fetch_orders(); 
+            
+
             require_once('views/view_orders.php');
         break;
     }

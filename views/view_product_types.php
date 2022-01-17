@@ -30,7 +30,7 @@
                     <div class="page-content">
                         <div class="page-container"> 
                             <div class="header clearfix">
-                                <p class="title fs-22">Produtos</p> 
+                                <p class="title fs-22">Tipos de Produtos</p> 
                             </div><!--.page-main-->
 
                             <div class="main">

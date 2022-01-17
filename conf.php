@@ -17,7 +17,7 @@
     /*
         Raiz do site (usaremos para carregar os estilos e scripts)
     */
-    const ROOT = "http://localhost:8080";
+    const ROOT = "http://localhost:8080//";
 
 
 ?>
