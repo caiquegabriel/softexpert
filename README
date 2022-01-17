@@ -2,9 +2,10 @@
 -> Fiz o teste restaurando a base com o arquivo "loja" e deu tudo certo. 
 
 
-# O arquivo "conf.php" contém as variáveis para a conexão com a base de dados. 
+# O arquivo "conf.php" contém as variáveis para a conexão com a base de dados e URL inicial do site. 
 -> Altere este arquivo com as credenciais do acesso do seu banco de dados Postgres. 
--> Na constante "ROOT" insira o endereço da raiz de onde se acessa o site/sistema, precisamos dele para carregar os estilos .css e scripts.js. 
+
+    -> Na constante "ROOT" insira o endereço da raiz de onde se acessa o site/sistema, precisamos dele para carregar os estilos .css e scripts.js. 
 -> Por exemplo, se o site estiver acessível em "http://localhost:8080", a variável "ROOT" deverá ser: 
 --> const ROOT = "http://localhost:8080"
 
